@@ -1,0 +1,17 @@
+build/
+install/
+log/
+__pycache__/
+*.pyc
+.vscode/
+
+# AI 모델 가중치 (~/ai_weights 에 보관, 저장소에 넣지 않는다)
+*.pt
+*.pth
+*.onnx
+
+# 실습 중 생기는 녹음·출력 파일
+*.wav
+*.mp3
+*.png
+!ire_assets/**/*.png

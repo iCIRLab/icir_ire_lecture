@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="ire_maze">
+    <include><uri>model://ground_plane</uri></include>
+    <include><uri>model://sun</uri></include>
+    <!-- 출발: (-2.0, 2.0) 부근 / 도착: (2.0, -2.0) 부근 -->
+    <model name="outer_n">
+      <static>true</static>
+      <pose>0 2.5 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>5.1 0.1 0.5</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>5.1 0.1 0.5</size></box></geometry>
+          <material><ambient>0.55 0.55 0.55 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <model name="outer_s">
+      <static>true</static>
+      <pose>0 -2.5 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>5.1 0.1 0.5</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>5.1 0.1 0.5</size></box></geometry>
+          <material><ambient>0.55 0.55 0.55 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <model name="outer_e">
+      <static>true</static>
+      <pose>2.5 0 0.25 0 0 1.5708</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>5.1 0.1 0.5</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>5.1 0.1 0.5</size></box></geometry>
+          <material><ambient>0.55 0.55 0.55 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <model name="outer_w">
+      <static>true</static>
+      <pose>-2.5 0 0.25 0 0 1.5708</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>5.1 0.1 0.5</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>5.1 0.1 0.5</size></box></geometry>
+          <material><ambient>0.55 0.55 0.55 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <model name="in_1">
+      <static>true</static>
+      <pose>-1.0 1.25 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>3.0 0.1 0.5</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>3.0 0.1 0.5</size></box></geometry>
+          <material><ambient>0.55 0.55 0.55 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <model name="in_2">
+      <static>true</static>
+      <pose>1.0 -1.25 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>3.0 0.1 0.5</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>3.0 0.1 0.5</size></box></geometry>
+          <material><ambient>0.55 0.55 0.55 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <model name="in_3">
+      <static>true</static>
+      <pose>-1.75 -0.6 0.25 0 0 1.5708</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>1.3 0.1 0.5</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>1.3 0.1 0.5</size></box></geometry>
+          <material><ambient>0.55 0.55 0.55 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <model name="in_4">
+      <static>true</static>
+      <pose>1.75 0.6 0.25 0 0 1.5708</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>1.3 0.1 0.5</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>1.3 0.1 0.5</size></box></geometry>
+          <material><ambient>0.55 0.55 0.55 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <model name="in_5">
+      <static>true</static>
+      <pose>0.0 0.0 0.25 0 0 1.5708</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>1.6 0.1 0.5</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>1.6 0.1 0.5</size></box></geometry>
+          <material><ambient>0.55 0.55 0.55 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+  </world>
+</sdf>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<!-- package.xml : 패키지의 신분증 + 의존성 명세서
+     rosdep install 명령이 이 파일을 읽고 의존 패키지를 apt로 대신 설치해 준다. -->
+<package format="3">                                   <!-- 명세 포맷 버전 - 고정 -->
+  <name>ire_week03_pubsub</name>                       <!-- 패키지 이름 -->
+  <version>0.1.0</version>                             <!-- 버전 - setup.py와 맞춘다 -->
+  <description>IRE 3주차 - pub/sub 예제</description>
+  <maintainer email="js.park@cnu.ac.kr">Jinseong Park</maintainer>
+  <license>Apache-2.0</license>
+
+  <!-- ament_python은 buildtool_depend를 적지 않는다 - 빌드 방식은 아래 <export>의
+       build_type이 정한다. (C++/ament_cmake는 ament_cmake를 적는다: ire_appendix_cpp 참고) -->
+
+  <!-- ★ 코드에서 import하는 패키지는 반드시 여기 선언 -->
+  <exec_depend>rclpy</exec_depend>                     <!-- 실행에 필요한 의존성 -->
+  <exec_depend>std_msgs</exec_depend>
+  <!-- 참고: build/exec 구분 없이 <depend>rclpy</depend> 하나로 써도 된다 -->
+
+  <test_depend>ament_flake8</test_depend>              <!-- colcon test용 - 무시 OK -->
+  <test_depend>ament_pep257</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>              <!-- ament 두 갈래 중 무엇인가 -->
+  </export>
+</package>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<!-- package.xml (ament_cmake 버전) : 3주차 Appendix B1 슬라이드의 실물
+     같은 파일의 ament_python 버전과 다른 곳은 세 군데뿐 -
+     buildtool_depend, 의존성(rclcpp), build_type -->
+<package format="3">
+  <name>ire_appendix_cpp</name>                      <!-- 패키지 이름 - 폴더명과 일치 -->
+  <version>0.1.0</version>
+  <description>IRE 3주차 Appendix - C++(ament_cmake) 최소 예제</description>
+  <maintainer email="js.park@cnu.ac.kr">Jinseong Park</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>   <!-- ① 빌드 도구가 다르다 -->
+
+  <depend>rclcpp</depend>                            <!-- ② C++ 클라이언트 라이브러리 -->
+  <depend>std_msgs</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>             <!-- ③ ament 두 갈래 중 cmake (3주차 11쪽) -->
+  </export>
+</package>
