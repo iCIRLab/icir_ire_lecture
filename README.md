@@ -9,7 +9,7 @@
 
 ---
 
-## 1. 최초 설치 (학기 초 1회 수행)
+## 1. 최초 설치
 
 > 본 절은 ROS 2 Humble 설치가 2주차 강의자료에 따라 완료된 상태를 전제로 합니다.
 
@@ -138,48 +138,27 @@ cd ~/ire_ws && colcon build --symlink-install --packages-select <해당 주차 �
 
 ## 3. 주차별 패키지 구성
 
-| 주차 | 패키지 | 내용 | 대표 실행 명령 |
+| 주차 | 패키지 | 내용 | 실행 |
 |---|---|---|---|
 | 3 | `ire_week03_pubsub` | 기본 pub/sub 예제 | `ros2 run ire_week03_pubsub talker` → `ros2 run ire_week03_pubsub listener` |
-| 4 | `ire_week04_service_launch` | 서비스 기반 원 그리기 제어, launch 파일, 파이썬 클라이언트 | `ros2 launch ire_week04_service_launch circle.launch.py` → `ros2 run ire_week04_service_launch start_stop_client` |
+| 4 | `ire_week04_service_launch` | 서비스 기반 원 그리기 제어, launch, 파이썬 클라이언트 | `ros2 launch ire_week04_service_launch circle.launch.py` → `ros2 run ire_week04_service_launch start_stop_client` |
 | 7 | `ire_week07_urdf` | URDF 표시 launch 및 예제 URDF | `ros2 launch ire_week07_urdf display.launch.py` |
-| 8 | `ire_week08_vision` | 적색 기둥 색상 검출 예제 · ArUco 마커 생성 · ArUco 월드 (미션: 검출 노드 직접 작성) | `ros2 launch ire_week08_vision red_pillar_world.launch.py` → 미션 `ros2 launch ire_week08_vision aruco_world.launch.py` |
-| 10 | `ire_week10_nav_demo` | 코드 기반 Nav2 목표 전송 | `ros2 run ire_week10_nav_demo go_to_pose` |
-| 11 | `ire_week11_moveit_skeleton` | Pick & Place 골격 코드 (미션 #4 시작점) | `ros2 run ire_week11_moveit_skeleton pick_demo` |
-| 12 | `ire_week12_ai_demo` | YOLO 및 LLM 데모 | **⚠ 수업 전 주에 setup 스크립트 실행 (4절 참조)** |
-| 공용 | `ire_assets` | Gazebo 모델(적색 기둥, ArUco 박스), 미로 월드, RViz 설정 | — |
-| 참고 | `ire_appendix_cpp` | 3주차 Appendix B1~B3의 구현본. 동일 노드의 C++(ament_cmake) 버전 | `ros2 run ire_appendix_cpp practice` |
+| 8 | `ire_week08_vision` | 적색 기둥 색 검출(예제) · ArUco 월드(미션) · 마커 생성 | (8주차 [README](ire_week08_vision/README.md) 참고) |
+| 10 | `ire_week10_nav_demo` | 코드로 Nav2 목표 전송 | (10주차 [README](ire_week10_nav_demo/README.md) 참고) |
+| 11 | `ire_week11_moveit_skeleton` | MoveIt2 플래닝 · Pick & Place 골격 (미션 #4 시작점) | (11주차 [README](ire_week11_moveit_skeleton/README.md) 참고) |
+| 12 | `ire_week12_ai_demo` | YOLO · SAM 2 · Llama · Whisper — **⚠ 수업 전 주에 설치 필요** | (12주차 [README](ire_week12_ai_demo/README.md) 참고) |
+| 공용 | `ire_assets` | Gazebo 모델·미로 월드·RViz 설정 | (공용 자산 [README](ire_assets/README.md) 참고) |
+| 참고 | `ire_appendix_cpp` | 3주차 Appendix B1~B3의 C++(ament_cmake) 버전 | `ros2 run ire_appendix_cpp practice` |
 
-8주차 이후는 Gazebo 시뮬레이션과 실물 키트를 함께 사용합니다. 시뮬레이션 로봇은
-`turtlebot3_manipulation_gazebo`가 띄우는 **팔이 장착된 실습 키트와 같은 구성**이며,
-실물 키트 절차는 ROBOTIS 문서를 따릅니다. 주차별 실행 순서와 실물 검증 방법은
-각 패키지의 README에 있습니다.
-
-| 주차 | 패키지 README |
-|---|---|
-| 8 | [ire_week08_vision/README.md](ire_week08_vision/README.md) |
-| 10 | [ire_week10_nav_demo/README.md](ire_week10_nav_demo/README.md) |
-| 11 | [ire_week11_moveit_skeleton/README.md](ire_week11_moveit_skeleton/README.md) |
-| 12 | [ire_week12_ai_demo/README.md](ire_week12_ai_demo/README.md) |
-| 공용 | [ire_assets/README.md](ire_assets/README.md) — 모델·월드 추가 방법 |
+8주차 이후는 시뮬레이션과 실물 키트를 함께 사용하며, 여러 터미널을 띄워야 하므로
+실행 절차를 각 패키지 README에 두었습니다. 시뮬레이션 로봇은
+`turtlebot3_manipulation_gazebo`가 띄우는 **팔이 장착된 실습 키트와 같은 구성**이고,
+실물 키트 절차는 ROBOTIS 문서를 따릅니다.
 
 > `ire_appendix_cpp`는 강의에서 다루지 않는 참고 자료입니다. C++ 패키지는 `--symlink-install`의
 > 즉시 반영 대상이 아니므로, 코드를 수정한 경우 **매번 `colcon build`를 다시 수행**해야 합니다.
 
-## 4. 12주차 사전 설치
-
-AI 데모는 다운로드 용량이 큽니다(torch 약 2GB, LLM 모델 수 GB). 수업 시간 내 내려받는 경우
-실습 진행이 불가능하므로 반드시 사전에 설치합니다.
-
-```bash
-cd ~/ire_ws/src/icir_ire_lecture/ire_week12_ai_demo
-./setup_week12.sh        # pip 설치, Ollama 설치, 모델 다운로드, 스모크 테스트
-```
-
-마지막에 `ALL OK`가 출력되는 화면을 캡처해 제출합니다 (수업 시작 시 확인).
-실행 순서와 노드 사용법은 [ire_week12_ai_demo/README.md](ire_week12_ai_demo/README.md)를 참고하십시오.
-
-## 5. 문제 해결
+## 4. 문제 해결
 
 ### Gazebo가 뜨지 않고 `gzserver ... exit code 255`
 
@@ -246,6 +225,6 @@ pip install --user "numpy<2"
 source ~/robot_ws/install/setup.bash
 ```
 
-## 6. 라이선스
+## 5. 라이선스
 
 본 저장소의 패키지는 Apache-2.0 라이선스를 따릅니다.
