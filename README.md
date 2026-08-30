@@ -222,7 +222,7 @@ pip install --user "numpy<2"
 빌드 후 워크스페이스를 source하지 않은 경우입니다.
 
 ```bash
-source ~/robot_ws/install/setup.bash
+source ~/ire_ws/install/setup.bash
 ```
 
 ## 5. 라이선스
