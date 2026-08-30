@@ -5,7 +5,7 @@ bringup(또는 gazebo) 상태에서:
   ros2 run ire_week11_moveit_skeleton pick_demo
 
 제공하는 것: 팔 관절 궤적 전송 + 그리퍼 열기/닫기 + 예시 시퀀스.
-학생 몫: ArUco pose → 목표 관절각/좌표 연결, 시퀀스 설계, 예외 처리.
+학생 몫: 지정 pick → place 시퀀스 설계
 
 주의: POSES의 관절값은 예시다 — 실물에서 teleop으로 팔을 움직여
       /joint_states 를 echo 하면서 자기 값을 찾아 바꿔 넣을 것.

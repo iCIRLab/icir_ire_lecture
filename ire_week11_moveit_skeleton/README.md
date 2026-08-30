@@ -5,7 +5,7 @@
 - `pick_demo` — 팔 관절 궤적 + 그리퍼 액션 + 예시 시퀀스 (MoveIt 없이 팔이 움직이는 최소 코드)
 - MoveIt2 플래닝은 수업에서 RViz(MotionPlanning 패널)로 체험 — 코드 통합은 심화
 - POSES의 관절값은 예시: teleop으로 팔을 움직이며 `/joint_states`를 보고 자기 값으로 교체
-- 학생 몫: 8주차 ArUco pose → 목표 연결, pick–place 시퀀스 설계
+- 학생 몫: 지정 pick–place 시퀀스 설계
 
 ## A. Gazebo (수업)
 
@@ -177,5 +177,5 @@ ros2 topic echo /joint_states
 | 로그는 찍히는데 팔이 안 움직임 | `ros2 control list_controllers`에서 `arm_controller`가 `active`인지 확인 |
 | `gripper` 단계에서 멈춤 | `gripper_controller` 미실행 — `wait_for_server()`에서 대기 중 |
 | `moveit_gazebo.launch.py` 실행 시 `No such file or directory` | 해당 launch는 동작하지 않음 — 2단계 방식 사용 |
-| Gazebo가 뜨지 않음 | 최상위 README 5절 참조 |
+| Gazebo가 뜨지 않음 | 최상위 README 5절(문제 해결) 참조 |
 | 이전 실행이 남아 launch 실패 | `pkill -x gzserver; pkill -x gzclient` 후 재실행 |
