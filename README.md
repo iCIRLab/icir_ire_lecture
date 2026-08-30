@@ -158,7 +158,44 @@ cd ~/ire_ws && colcon build --symlink-install --packages-select <해당 주차 �
 > `ire_appendix_cpp`는 강의에서 다루지 않는 참고 자료입니다. C++ 패키지는 `--symlink-install`의
 > 즉시 반영 대상이 아니므로, 코드를 수정한 경우 **매번 `colcon build`를 다시 수행**해야 합니다.
 
-## 4. 문제 해결
+## 4. 홈서비스 챌린지 (시뮬레이션)
+
+ROBOTIS가 제공하는 완성 예시입니다. **ArUco 검출 + Nav2 주행 + 팔 제어**를 하나로
+묶은 것으로, 8·10·11주차 내용이 합쳐진 형태입니다. 기말 프로젝트 참고용으로
+돌려 보십시오.
+
+```bash
+# 터미널1 — 챌린지 월드
+ros2 launch turtlebot3_manipulation_gazebo turtlebot3_home_service_challenge.launch.py
+
+# 터미널2 — Nav2
+ros2 launch turtlebot3_home_service_challenge_tools navigation2.launch.py use_sim:=true
+
+# RViz 에서 2D Pose Estimate 로 초기 위치 지정
+
+# 터미널3 — 미션 제어 (ArUco 주차 · 팔)
+ros2 launch turtlebot3_home_service_challenge_core core_node.launch.py
+```
+
+```bash
+# 시나리오 실행 (room1 ~ room4, config/scenario.yaml 에 정의)
+ros2 topic pub -1 /scenario_selection std_msgs/msg/String "{data: 'room1'}"
+
+# 단계별로 직접
+ros2 topic pub -1 /target_marker_id std_msgs/msg/Int32 "{data: 1}"
+ros2 topic pub -1 /manipulator_control std_msgs/msg/String "{data: 'pick_target'}"
+```
+
+> **`use_sim:=true`를 빠뜨리면 로봇이 목표 근처만 맴돕니다.** Nav2가 시뮬레이션
+> 시계(`/clock`) 대신 시스템 시계를 써서 TF 시각이 어긋나기 때문입니다.
+> ROBOTIS 문서에는 이 인자가 빠져 있습니다.
+
+구조는 코어 노드가 지휘하는 형태입니다. 시나리오를 받으면 ArUco 주차 → 팔 제어 →
+다음 목표 순으로 각 노드에 명령을 내리고, 완료 신호를 받아 진행합니다.
+
+- 문서: <https://docs.robotis.com/docs/systems/turtlebot3/manipulation/home_service_challenge>
+
+## 5. 문제 해결
 
 ### Gazebo가 뜨지 않고 `gzserver ... exit code 255`
 
@@ -225,6 +262,6 @@ pip install --user "numpy<2"
 source ~/ire_ws/install/setup.bash
 ```
 
-## 5. 라이선스
+## 6. 라이선스
 
 본 저장소의 패키지는 Apache-2.0 라이선스를 따릅니다.
