@@ -104,11 +104,15 @@ git checkout a35a56c8b        # 복귀: git checkout humble
 ### 1-3. 의존성 설치 및 빌드
 
 ```bash
+source /opt/ros/humble/setup.bash                   # ★ 먼저 실행할 것
 cd ~/ire_ws
 sudo rosdep init 2>/dev/null; rosdep update
 rosdep install --from-paths src --ignore-src -y     # 누락된 의존성 자동 설치
 colcon build --symlink-install
 ```
+
+> 첫 줄을 빠뜨리면 `ament_cmake`·`action_msgs`를 찾지 못해 빌드가 실패합니다.
+> `.bashrc` 설정(1-4)은 아직 하기 전이므로 이 단계에서는 직접 source해야 합니다.
 
 ### 1-4. .bashrc 설정
 
@@ -228,6 +232,21 @@ gzclient: shared_ptr.hpp:728: [T = gazebo::rendering::Camera] Assertion `px != 0
 grep gazebo/setup.sh ~/.bashrc || echo 'source /usr/share/gazebo/setup.sh' >> ~/.bashrc
 source ~/.bashrc
 ```
+
+### 실물 로봇에서 팔이 초기 자세로 간 뒤 Dynamixel 통신 오류
+
+`hardware.launch.py` 실행 시 팔·그리퍼가 초기 자세까지는 움직이지만 이후 통신이
+끊기고 `[DynamixelSDKWrapper] There is no status packet!` 이 반복되는 경우입니다.
+Dynamixel의 **Return Delay Time**이 큰 값이면 응답이 밀려 제어 주기를 못 맞춥니다.
+
+1. OpenCR을 `usb_to_dxl` 펌웨어로 임시 변경
+2. 각 Dynamixel의 Return Delay Time을 `250` → `0` 으로 변경
+3. `turtlebot3_manipulation` 펌웨어를 다시 업로드
+
+같은 증상이 보고된 공식 이슈입니다.
+
+- <https://github.com/ROBOTIS-GIT/turtlebot3/issues/944>
+- <https://github.com/ROBOTIS-GIT/turtlebot3/issues/1042>
 
 ### `PackageNotFoundError: turtlebot3_gazebo`
 

@@ -189,4 +189,4 @@ RViz의 **Nav2 Goal**로 먼저 찍어 도달 여부를 확인한 뒤 코드에 
 |---|---|
 | `waitUntilNav2Active()`에서 멈춤 | 3단계 초기 위치 미지정 |
 | 목표 근처에서 정지 후 `FAILED` | 위 "알려진 문제" 참조 |
-| Gazebo가 뜨지 않음 | 최상위 README 5절 참조 |
+| Gazebo가 뜨지 않음 | 최상위 README 5절(문제 해결) 참조 |

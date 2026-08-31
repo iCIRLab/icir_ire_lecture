@@ -82,23 +82,40 @@ Gazebo에서 확인한 코드를 실제 로봇에서 그대로 돌려봅니다.
 > ssh ubuntu@<로봇 IP>
 > ```
 
-**[TurtleBot3 SBC]** — 로봇 구동
+**[TurtleBot3 SBC] 터미널1** — 로봇 구동
 
 ```bash
 ros2 launch turtlebot3_manipulation_bringup hardware.launch.py
 ```
 
-**[Remote PC] 터미널1** — 카메라 토픽 확인
+**[TurtleBot3 SBC] 터미널2** — 카메라 구동
+
+`hardware.launch.py`는 **카메라를 띄우지 않습니다.** 영상을 받으려면 카메라 노드를
+따로 실행해야 합니다. 처음 한 번은 설치가 필요합니다.
 
 ```bash
-ros2 topic list | grep image
+sudo apt install ros-humble-camera-ros
 ```
 
-**[Remote PC] 터미널2** — 검출 노드 실행
+```bash
+ros2 run camera_ros camera_node --ros-args \
+  -p format:='RGB888' -p width:=320 -p height:=240
+```
+
+→ `/camera/image_raw` 로 발행됩니다.
+
+기본 해상도는 640이지만 320×240 으로 낮췄습니다. 라즈베리파이 부담과 무선 전송량이
+줄고, 색 검출에는 이 정도면 충분합니다.
+
+> 시뮬레이션과 토픽 이름이 다릅니다. Gazebo 로봇은 `/pi_camera/image_raw`,
+> 실물은 위와 같이 실행하면 `/camera/image_raw` 입니다.
+> `ros2 topic list | grep image` 로 확인하십시오.
+
+**[Remote PC]** — 검출 노드 실행
 
 ```bash
 ros2 run ire_week08_vision color_detect --ros-args \
-  -p image_topic:=<확인한 토픽> -p show_windows:=true
+  -p image_topic:=/camera/image_raw -p show_windows:=true
 ```
 
 > **카메라 토픽 이름을 반드시 확인하십시오.** 노드 기본값은 Gazebo 실습 키트 기준인
@@ -123,4 +140,4 @@ ArUco 미션은 `generate_aruco`로 만든 마커를 인쇄해 붙이고 같은 
 | `listening:` 만 찍히고 검출 로그가 없음 | 카메라 토픽 불일치 — `ros2 topic list | grep image`로 확인 |
 | 창이 뜨지 않음 | `show_windows` 파라미터가 `false` |
 | ArUco가 검출되지 않음 | 마커 흰 여백 부족, 조명 반사, 거리가 너무 멂 |
-| Gazebo가 뜨지 않음 | 최상위 README 5절 참조 |
+| Gazebo가 뜨지 않음 | 최상위 README 5절(문제 해결) 참조 |
