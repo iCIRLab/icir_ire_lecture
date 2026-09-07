@@ -7,6 +7,14 @@
 - 대상 장비: TurtleBot3 Waffle Pi + OpenMANIPULATOR-X
 - 개발 환경: Ubuntu 22.04, ROS 2 Humble
 
+## 수업 자료 및 녹화 영상
+
+PDF 강의자료는 Google Drive 폴더에서 확인 할 수 있습니다.
+지능로봇실습 수업의 녹화본은 YouTube 재생목록에서 확인할 수 있습니다.
+
+- [PDF 강의자료 (Google Drive)](https://drive.google.com/drive/folders/1QJcDzOA0_o3rJuu64A8akpKEU0eivC_8)
+- [지능로봇실습 수업 녹화 영상 (YouTube 재생목록)](https://www.youtube.com/playlist?list=PLR_5NyKIG_XQ)
+
 ---
 
 ## 1. 최초 설치
