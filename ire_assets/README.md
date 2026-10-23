@@ -4,7 +4,7 @@
 
 | 경로 | 내용 | 사용 주차 |
 |---|---|---|
-| `models/red_pillar/` | 적색 기둥 (색 검출 대상) | 8 |
+| `models/red_pillar/` | 빨간 기둥 (색 검출 대상) | 8 |
 | `models/aruco_box/` | ArUco 마커(id 0) 박스 | 8, 11 |
 | `worlds/ire_maze.world` | 미로 월드 (출발 `(-2.0, 2.0)` → 도착 `(2.0, -2.0)`) | 미션 |
 | `rviz/` | 주차별 RViz 설정(`.rviz`) 보관 위치 | — |
@@ -21,7 +21,8 @@ pillar_sdf = os.path.join(get_package_share_directory('ire_assets'),
 
 ```bash
 ros2 launch turtlebot3_manipulation_gazebo gazebo.launch.py \
-  world:=$(ros2 pkg prefix ire_assets)/share/ire_assets/worlds/ire_maze.world
+  world:=$(ros2 pkg prefix ire_assets)/share/ire_assets/worlds/ire_maze.world \
+  x_pose:=-2.0 y_pose:=2.0
 ```
 
 ## 모델을 추가하려면

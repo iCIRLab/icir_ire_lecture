@@ -59,7 +59,7 @@ sudo apt install -y \
 
 | 패키지 | 사용 주차 | 출처 |
 |---|---|---|
-| gazebo-* | 8주차 이후 (시뮬레이션) | Quick Start |
+| gazebo-* | 6주차 이후 (시뮬레이션) | Quick Start |
 | colcon-common-extensions | 빌드 도구 (전 주차) | Quick Start |
 | cartographer, cartographer-ros | 9주차 (SLAM) | Quick Start |
 | navigation2, nav2-bringup | 10주차 (Nav2) | Quick Start |
@@ -155,7 +155,7 @@ cd ~/ire_ws && colcon build --symlink-install --packages-select <해당 주차 �
 | 3 | `ire_week03_pubsub` | 기본 pub/sub 예제 | `ros2 run ire_week03_pubsub talker` → `ros2 run ire_week03_pubsub listener` |
 | 4 | `ire_week04_service_launch` | 서비스 기반 원 그리기 제어, launch, 파이썬 클라이언트 | `ros2 launch ire_week04_service_launch circle.launch.py` → `ros2 run ire_week04_service_launch start_stop_client` |
 | 7 | `ire_week07_urdf` | URDF 표시 launch 및 예제 URDF | `ros2 launch ire_week07_urdf display.launch.py` |
-| 8 | `ire_week08_vision` | 적색 기둥 색 검출(예제) · ArUco 월드(미션) · 마커 생성 | (8주차 [README](ire_week08_vision/README.md) 참고) |
+| 8 | `ire_week08_vision` | 빨간 기둥 색 검출(예제) · ArUco 검출(예제) · 마커 생성 | (8주차 [README](ire_week08_vision/README.md) 참고) |
 | 10 | `ire_week10_nav_demo` | 코드로 Nav2 목표 전송 | (10주차 [README](ire_week10_nav_demo/README.md) 참고) |
 | 11 | `ire_week11_moveit_skeleton` | MoveIt2 플래닝 · Pick & Place 골격 (미션 #4 시작점) | (11주차 [README](ire_week11_moveit_skeleton/README.md) 참고) |
 | 12 | `ire_week12_ai_demo` | YOLO · SAM 2 · Llama · Whisper — **⚠ 수업 전 주에 설치 필요** | (12주차 [README](ire_week12_ai_demo/README.md) 참고) |

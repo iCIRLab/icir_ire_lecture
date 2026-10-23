@@ -1,4 +1,4 @@
-"""실습 키트(팔 장착) 시뮬레이션에 ArUco 박스를 세운다 (검출 노드는 각자 작성!).
+"""실습 키트(팔 장착) 시뮬레이션에 ArUco 박스를 세운다 (검출: ros2 run ire_week08_vision aruco_detect).
 
   export TURTLEBOT3_MODEL=waffle_pi
   ros2 launch ire_week08_vision aruco_world.launch.py
@@ -21,9 +21,9 @@ def generate_launch_description():
 
     spawn_box = TimerAction(period=5.0, actions=[
         Node(package='gazebo_ros', executable='spawn_entity.py',
-             # 로봇 시작 위치(-2.0, -0.5) 정면 약 0.7m — teleop으로 이동하지 않아도
+             # 로봇 시작 위치(-2.0, -0.5) 정면 약 1.0 m — teleop으로 이동하지 않아도
              # 처음부터 카메라에 마커가 보이도록 배치한다.
              arguments=['-entity', 'aruco_box', '-file', box_sdf,
-                        '-x', '-0.3', '-y', '-0.5', '-z', '0.0'])])
+                        '-x', '-1.0', '-y', '-0.5', '-z', '0.0'])])
 
     return LaunchDescription([world, spawn_box])

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ArUco 마커 이미지 생성 — 출력해서 실물 실습에 사용.
+"""ArUco 마커 이미지 생성 — 실습 때 노트북·스마트폰 화면에 띄워 사용 (인쇄도 가능).
 
   ros2 run ire_week08_vision generate_aruco        # aruco_0.png ~ aruco_9.png 생성
 

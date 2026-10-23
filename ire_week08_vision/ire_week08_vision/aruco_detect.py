@@ -75,6 +75,9 @@ class ArucoDetect(Node):
         self.declare_parameter('camera_info_topic', '/pi_camera/camera_info')
         self.declare_parameter('marker_size', 0.117)    # 검은 사각형 한 변 [m] (시뮬 0.117)
         self.declare_parameter('show_windows', False)   # True면 OpenCV 창도 띄운다
+        # pose가 기준으로 삼는 프레임 — 카메라 광학 프레임(z 앞·x 오른쪽·y 아래).
+        # 시뮬·실물 모두 URDF에 있어 TF로 로봇에 붙는다 (영상의 frame_id는 쓰지 않는다)
+        self.declare_parameter('frame_id', 'camera_rgb_optical_frame')
 
         self.bridge = CvBridge()
         self.K = self.D = None
@@ -106,8 +109,8 @@ class ArucoDetect(Node):
                                    throttle_duration_sec=3.0)
             return
         if not self.frame_logged:
-            self.get_logger().info(f'frame_id = {msg.header.frame_id}'
-                                   f'  → RViz2 Fixed Frame을 이 이름으로')
+            self.get_logger().info(f'pose frame_id = {self.get_parameter("frame_id").value}'
+                                   f'  → RViz2 Fixed Frame은 base_footprint')
             self.frame_logged = True
 
         bgr = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
@@ -129,7 +132,8 @@ class ArucoDetect(Node):
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.45, color, thick)
 
                 p = PoseStamped()
-                p.header = msg.header                    # 영상과 같은 시각·같은 프레임(카메라 기준)
+                p.header.stamp = msg.header.stamp        # 영상과 같은 시각
+                p.header.frame_id = self.get_parameter('frame_id').value   # 카메라 광학 프레임 기준
                 p.pose.position.x, p.pose.position.y, p.pose.position.z = map(float, tvec)
                 o = p.pose.orientation
                 o.x, o.y, o.z, o.w = rvec_to_quaternion(rvec)
