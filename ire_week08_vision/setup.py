@@ -24,7 +24,8 @@ setup(
     entry_points={
         'console_scripts': [
             'color_detect = ire_week08_vision.color_detect:main',
-            'generate_aruco = ire_week08_vision.generate_aruco:main'
+            'generate_aruco = ire_week08_vision.generate_aruco:main',
+            'aruco_detect = ire_week08_vision.aruco_detect:main'
         ],
     },
 )
