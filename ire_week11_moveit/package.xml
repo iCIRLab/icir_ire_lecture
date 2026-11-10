@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>ire_week11_moveit</name>
+  <version>0.1.0</version>
+  <description>IRE 11주차 — MoveIt2 (RViz · moveit_py) · Pick &amp; Place</description>
+  <maintainer email="js.park@cnu.ac.kr">Jinseong Park</maintainer>
+  <license>Apache-2.0</license>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>trajectory_msgs</exec_depend>
+  <exec_depend>control_msgs</exec_depend>
+  <!-- moveit_py_demo -->
+  <exec_depend>moveit_py</exec_depend>
+  <exec_depend>moveit_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>shape_msgs</exec_depend>
+  <exec_depend>xacro</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
+  <exec_depend>ament_index_python</exec_depend>
+  <exec_depend>turtlebot3_manipulation_description</exec_depend>
+  <exec_depend>turtlebot3_manipulation_moveit_config</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>moveit_ros_visualization</exec_depend>
+  <exec_depend>ire_assets</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

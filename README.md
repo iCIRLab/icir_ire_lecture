@@ -157,7 +157,7 @@ cd ~/ire_ws && colcon build --symlink-install --packages-select <해당 주차 �
 | 7 | `ire_week07_urdf` | URDF 표시 launch 및 예제 URDF | `ros2 launch ire_week07_urdf display.launch.py` |
 | 8 | `ire_week08_vision` | 빨간 기둥 색 검출(예제) · ArUco 검출(예제) · 마커 생성 | (8주차 [README](ire_week08_vision/README.md) 참고) |
 | 10 | `ire_week10_nav_demo` | 코드로 Nav2 목표 전송 | (10주차 [README](ire_week10_nav_demo/README.md) 참고) |
-| 11 | `ire_week11_moveit_skeleton` | MoveIt2 플래닝 · Pick & Place 골격 (미션 #4 시작점) | (11주차 [README](ire_week11_moveit_skeleton/README.md) 참고) |
+| 11 | `ire_week11_moveit` | RViz로 MoveIt · 코드로 팔 움직이기(`pick_demo`) · 코드로 MoveIt 돌리기(`moveit_py_demo`) — 미션 #4 시작점 | (11주차 [README](ire_week11_moveit/README.md) 참고) |
 | 12 | `ire_week12_ai_demo` | YOLO · SAM 2 · Llama · Whisper — **⚠ 수업 전 주에 설치 필요** | (12주차 [README](ire_week12_ai_demo/README.md) 참고) |
 | 공용 | `ire_assets` | Gazebo 모델·미로 월드·RViz 설정 | (공용 자산 [README](ire_assets/README.md) 참고) |
 | 참고 | `ire_appendix_cpp` | 3주차 Appendix B1~B3의 C++(ament_cmake) 버전 | `ros2 run ire_appendix_cpp practice` |

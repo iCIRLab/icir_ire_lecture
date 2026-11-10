@@ -2,7 +2,7 @@
 """11주차 — Pick & Place.
 
 bringup(또는 gazebo) 상태에서:
-  ros2 run ire_week11_moveit_skeleton pick_demo
+  ros2 run ire_week11_moveit pick_demo
 
 제공하는 것: 팔 관절 궤적 전송 + 그리퍼 열기/닫기 + 예시 시퀀스.
 학생 몫: 지정 pick → place 시퀀스 설계

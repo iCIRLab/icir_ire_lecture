@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 import os
 from glob import glob
 
-package_name = 'ire_week11_moveit_skeleton'
+package_name = 'ire_week11_moveit'
 
 setup(
     name=package_name,
@@ -12,6 +12,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -21,7 +22,8 @@ setup(
     license='Apache-2.0',
     entry_points={
         'console_scripts': [
-            'pick_demo = ire_week11_moveit_skeleton.pick_demo:main'
+            'pick_demo = ire_week11_moveit.pick_demo:main',
+            'moveit_py_demo = ire_week11_moveit.moveit_py_demo:main',
         ],
     },
 )

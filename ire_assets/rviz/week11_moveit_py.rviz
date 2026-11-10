@@ -1,0 +1,49 @@
+# 11주차 moveit_py_demo 보기용 — move_group 없이 RViz만 띄운다. 직접 rviz2 -d 로 열지 말고 아래 launch로 연다:
+#   ros2 launch ire_week11_moveit moveit_py_rviz.launch.py
+# (MoveIt RViz 플러그인은 로봇 모델(URDF·SRDF)을 RViz 노드 파라미터에서 읽으므로 launch가 넘겨 줘야 한다)
+# moveit_py가 발행하는 planning scene(/moveit_cpp/monitored_planning_scene)을 그대로 그린다:
+# 로봇(현재 관절값) + 6단계 충돌 상자(초록). moveit_py_demo가 실행 중일 때만 갱신된다.
+# (RobotModel 표시를 함께 추가하면 URDF 파싱이 둘 중 하나만 성공하는 경우가 있어 넣지 않음)
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Enabled: true
+      Name: Grid
+    - Class: moveit_rviz_plugin/PlanningScene
+      Enabled: true
+      Name: PlanningScene (moveit_py)
+      Move Group Namespace: ""
+      Planning Scene Topic: /moveit_cpp/monitored_planning_scene
+      Robot Description: robot_description
+      Scene Geometry:
+        Scene Alpha: 0.9
+        Scene Color: 50; 230; 50
+        Show Scene Geometry: true
+      Scene Robot:
+        Robot Alpha: 1
+        Show Robot Collision: false
+        Show Robot Visual: true
+  Enabled: true
+  Global Options:
+    Fixed Frame: base_footprint
+  Name: root
+  Tools:
+    - Class: rviz_default_plugins/Interact
+  Value: true
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 1.2
+      Focal Point:
+        X: 0.1
+        Y: 0
+        Z: 0.2
+      Pitch: 0.4
+      Yaw: 0.6
+Window Geometry:
+  Height: 700
+  Width: 1000
